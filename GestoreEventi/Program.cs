@@ -1,6 +1,7 @@
 ﻿
 using GestoreEventi;
 
+/*
 Console.Write("Inserisci il nome dell'evento: ");
 string? titolo = Console.ReadLine().ToLower();
 while (titolo == null)
@@ -78,3 +79,95 @@ while (!uscita)
             break;
     }
 }
+*/
+
+List<Evento> eventoLista = new List<Evento>();
+
+Console.Write("Aggiungi il nome del tuo programma eventi: ");
+string? nomeEvento = Console.ReadLine().ToLower();
+while (nomeEvento == null)
+{
+    nomeEvento = Console.ReadLine().ToLower();
+}
+
+Console.Write("Quanti eventi vuoi aggiungere? : ");
+int numeriEventi = Convert.ToInt32(Console.ReadLine());
+
+for (int i = 0; i < numeriEventi; i++)
+{
+
+
+    Console.Write("Aggiungi il nome del {0}° evento : ", i+1);
+    string? nome = Console.ReadLine().ToLower();
+    while (nome == null)
+    {
+        nome = Console.ReadLine().ToLower();
+    }
+
+    Console.Write("Aggiungi posti totali : ");
+    int postiTotali = Convert.ToInt32(Console.ReadLine());
+    while (postiTotali == null)
+    {
+        postiTotali = Convert.ToInt32(Console.ReadLine());
+    }
+
+    bool esci = false;
+    while (!esci)
+    {
+        DateTime dataOra = DateTime.Now;
+        bool formatoDataCorretto = false;
+        while (!formatoDataCorretto)
+        {
+            Console.Write("Aggiungi data [gg/mm/aaaa] : ");
+            try
+            {
+                dataOra = DateTime.Parse(Console.ReadLine());
+                formatoDataCorretto = true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Il formato non è corretto");
+            }
+        }
+
+
+        try
+        {
+
+            eventoLista.Add(new Evento(nome, dataOra, postiTotali));
+            esci = true;
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Il formato non è corretto");
+        }
+    }
+}
+
+ProgrammaEventi lista = new ProgrammaEventi(nomeEvento, eventoLista);
+lista.Stampa();
+
+
+Console.Write("Inserisci data per sapere che eventi ci saranno: ");
+
+DateTime dataScelta = DateTime.Now;
+bool uscita = false;
+while (!uscita)
+{
+    Console.Write("Aggiungi data [gg/mm/aaaa]: ");
+    try
+    {
+        dataScelta = DateTime.Parse(Console.ReadLine().ToString());
+        
+        uscita = true;
+    }
+    catch (Exception)
+    {
+        Console.WriteLine("Il formato non è corretto");
+    }
+}
+
+lista.StampaEvento(dataScelta);
+lista.ListaVuota();
+
+

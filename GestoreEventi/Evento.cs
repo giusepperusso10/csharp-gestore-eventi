@@ -4,7 +4,7 @@ namespace GestoreEventi
 	public class Evento
 	{
 		public string titolo { get; set; }
-		public DateTime data { get; set; }
+		public DateTime data = DateTime.Parse("01/01/2022");
 		private int capienzaMassima;
 		private int postiDisponibili;
 		private int numeroPostiPrenotati;
@@ -26,7 +26,8 @@ namespace GestoreEventi
 
 		public string SetTitolo(string titolo)
 		{
-			return titolo;
+			this.titolo = titolo;
+			return this.titolo;
 		}
 
 		public DateTime GetDateTime()
@@ -85,7 +86,7 @@ namespace GestoreEventi
 
 		public override string ToString()
 		{
-			Console.WriteLine(data + " - " + titolo);
+			Console.WriteLine(data.ToString("MM/dd/yyyy") + " - " + titolo);
 			return base.ToString();
 		}
 	}
