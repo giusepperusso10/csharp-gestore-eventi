@@ -106,10 +106,6 @@ for (int i = 0; i < numeriEventi; i++)
 
     Console.Write("Aggiungi posti totali : ");
     int postiTotali = Convert.ToInt32(Console.ReadLine());
-    while (postiTotali == null)
-    {
-        postiTotali = Convert.ToInt32(Console.ReadLine());
-    }
 
     bool esci = false;
     while (!esci)
@@ -158,7 +154,6 @@ while (!uscita)
     try
     {
         dataScelta = DateTime.Parse(Console.ReadLine().ToString());
-        
         uscita = true;
     }
     catch (Exception)
