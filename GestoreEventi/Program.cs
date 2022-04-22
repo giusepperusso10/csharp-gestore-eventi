@@ -1,7 +1,7 @@
 ﻿
 using GestoreEventi;
 
-/*
+//------ MILESTONE 1 / 2 ---------
 Console.Write("Inserisci il nome dell'evento: ");
 string? titolo = Console.ReadLine().ToLower();
 while (titolo == null)
@@ -13,7 +13,7 @@ DateTime data = DateTime.Now;
 bool dataCorretta = false;
 while (!dataCorretta)
 {
-        Console.Write("Aggiungi data [gg/mm/aaaa] e ora [00:00] : ");
+        Console.Write("Aggiungi data [gg/mm/aaaa]: ");
         try
         {
             data = DateTime.Parse(Console.ReadLine());
@@ -41,8 +41,6 @@ while (postiDaPrenotare == null)
     postiDaPrenotare = int.Parse(Console.ReadLine().ToLower());
 }
 
-
-
 Evento evento1 = new Evento(titolo, data, capienzaMassima);
 
 evento1.PrenotaPosti(postiDaPrenotare);
@@ -61,10 +59,6 @@ while (!uscita)
         case "si":
             Console.Write("Quanti posti vuoi disdire?: ");
             int postiDaDisdire = int.Parse(Console.ReadLine().ToLower());
-            while (postiDaDisdire == null)
-            {
-                postiDaDisdire = int.Parse(Console.ReadLine().ToLower());
-            }
             evento1.DisdiciPosti(postiDaDisdire);
             Console.WriteLine("Numero posti prenotati: " + evento1.GetNumeroPostiPrenotati());
             Console.WriteLine("Numero numero posti disponibili: " + evento1.GetPostiDisponibili());
@@ -79,7 +73,8 @@ while (!uscita)
             break;
     }
 }
-*/
+
+//------ MILESTONE 3 / 4 ---------
 
 List<Evento> eventoLista = new List<Evento>();
 
@@ -126,17 +121,9 @@ for (int i = 0; i < numeriEventi; i++)
             }
         }
 
-
-        try
-        {
-
-            eventoLista.Add(new Evento(nome, dataOra, postiTotali));
-            esci = true;
-        }
-        catch (Exception)
-        {
-            Console.WriteLine("Il formato non è corretto");
-        }
+        eventoLista.Add(new Evento(nome, dataOra, postiTotali));
+        esci = true;
+       
     }
 }
 
@@ -147,14 +134,13 @@ lista.Stampa();
 Console.Write("Inserisci data per sapere che eventi ci saranno: ");
 
 DateTime dataScelta = DateTime.Now;
-bool uscita = false;
-while (!uscita)
+bool uscit = false;
+while (!uscit)
 {
-    Console.Write("Aggiungi data [gg/mm/aaaa]: ");
     try
     {
         dataScelta = DateTime.Parse(Console.ReadLine().ToString());
-        uscita = true;
+        uscit = true;
     }
     catch (Exception)
     {
