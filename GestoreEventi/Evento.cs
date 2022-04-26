@@ -8,7 +8,6 @@ namespace GestoreEventi
 		private int capienzaMassima;
 		private int postiDisponibili;
 		private int numeroPostiPrenotati;
-		private int postiRimanenti;
 
 		public Evento(string titolo, DateTime data, int capienzaMassima)
 		{
@@ -19,15 +18,15 @@ namespace GestoreEventi
 			numeroPostiPrenotati = 0;
 		}
 
+		//GET E SET
 		public string GetTitolo()
         {
 			return titolo;
         }
 
-		public string SetTitolo(string titolo)
+		public void SetTitolo(string titolo)
 		{
 			this.titolo = titolo;
-			return this.titolo;
 		}
 
 		public DateTime GetDateTime()
@@ -35,10 +34,10 @@ namespace GestoreEventi
 			return data;
         }
 
-		public DateTime SetDateTime(DateTime data)
+		public void SetDateTime(DateTime data)
 		{
 			ControlloDataEsatta();
-			return data;
+			this.data = data;
 		}
 
 		public int GetCapienzaMassima()
@@ -49,11 +48,6 @@ namespace GestoreEventi
 		public int GetNumeroPostiPrenotati()
 		{
 			return numeroPostiPrenotati;
-		}
-
-		public int GetNumeroPostiRimasti()
-		{
-			return postiRimanenti;
 		}
 
 		public int GetPostiDisponibili()
@@ -72,6 +66,7 @@ namespace GestoreEventi
 			}
 		}
 
+		//METODI PRENOTA E DISDICI
 		public void PrenotaPosti(int postiDaPrenotare)
         {
 			numeroPostiPrenotati = numeroPostiPrenotati + postiDaPrenotare;

@@ -30,7 +30,7 @@ namespace GestoreEventi
 			return this.eventi;
 		}
 
-
+		//STAMPA EVENTO DA DATA
 
 		public void StampaEvento(DateTime dataScelta)
         {
@@ -66,6 +66,7 @@ namespace GestoreEventi
 		//SVUOTA LA LISTA
 		public void ListaVuota()
 		{
+			this.titolo = "";
 			this.eventi.Clear();
 		}
 

@@ -113,6 +113,7 @@ for (int i = 0; i < numeriEventi; i++)
             try
             {
                 dataOra = DateTime.Parse(Console.ReadLine());
+                
                 formatoDataCorretto = true;
             }
             catch (Exception)
